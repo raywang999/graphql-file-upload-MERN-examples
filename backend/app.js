@@ -57,7 +57,7 @@ async function startServer() {
 	mongoose.connect(`${process.env.MONGO_URL}`);
 
 	// Start the server
-	await new Promise(resolve => httpServer.listen({ port: process.env.PORT }, resolve));
+	await  httpServer.listen({ port: process.env.PORT });
 	console.log(`🚀 Server ready at http://localhost:${process.env.PORT}/${apolloServer.graphqlPath}`);
 }
 
