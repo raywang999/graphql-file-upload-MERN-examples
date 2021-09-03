@@ -52,12 +52,12 @@ async function startServer() {
 		app: app,
 		path: '/'
 	});
-	
+
 	// Connect to MongoDB 
 	mongoose.connect(`${process.env.MONGO_URL}`);
 
 	// Start the server
-	await  httpServer.listen({ port: process.env.PORT });
+	await httpServer.listen({ port: process.env.PORT });
 	console.log(`🚀 Server ready at http://localhost:${process.env.PORT}/${apolloServer.graphqlPath}`);
 }
 
