@@ -6,15 +6,17 @@ import {
   ApolloProvider,
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
+import env from 'dotenv';
 
 import { cache } from './cache';
 import App from './App';
 
+env.config();
 const client = new ApolloClient({
   cache,
   ssrMode: typeof window === 'undefined',
   link: createUploadLink({
-    uri: 'http://localhost:8080/graphql',
+    uri: process.env.API_URL,
   }),
 });
 
