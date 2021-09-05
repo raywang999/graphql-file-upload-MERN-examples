@@ -13,6 +13,8 @@ module.exports = {
    */
   storeUpload: async (upload) => {
     const { createReadStream, filename, mimetype, encoding } = await upload.promise;
+
+    // For information of javascript streams, refer to https://nodesource.com/blog/understanding-streams-in-nodejs/
     const stream = createReadStream();
     const storedFileName = `${shortId.generate()}-${filename}`;
     const storedFileUrl = path.join(UPLOAD_DIRECTORY_URL, storedFileName);
