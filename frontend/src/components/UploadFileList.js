@@ -9,6 +9,7 @@ const MULTIPLE_UPLOAD_MUTATION = gql`
 `;
 
 export default function UploadFileList() {
+  // Refer to ./UploadFile.js
   const [multipleUploadMutation] = useMutation(MULTIPLE_UPLOAD_MUTATION);
   const apolloClient = useApolloClient();
 

@@ -19,7 +19,7 @@ export default function Uploads() {
         </tr>
       </thead>
       <tbody>
-        {uploads.map(({ filename, url }) => (
+        {uploads.map(({ filename }) => (
           <tr key={filename}>
             <td>{filename}</td>
           </tr>

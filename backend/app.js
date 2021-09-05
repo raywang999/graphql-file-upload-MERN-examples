@@ -5,7 +5,7 @@ const { ApolloServer } = require('apollo-server-express');
 const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core');
 const { graphqlUploadExpress } = require('graphql-upload');
 const mongoose = require('mongoose');
-require('dotenv').config();
+require('dotenv').config(); //configure environment variables as specified in `.env`
 
 const UPLOAD_DIRECTORY_URL = require('./config/UPLOAD_DIRECTORY_URL.js');
 const apolloTypeDefs = require('./graphql/schema/index');
@@ -21,7 +21,7 @@ async function startServer() {
 	const app = new express(); //creates express app
 
 	// Required logic for uploading files (multipart-requests) with Express
-	// For more on multipart-requests, check https://github.com/jaydenseric/graphql-multipart-request-spec#server 
+	// For more on multipart-requests, refer to https://github.com/jaydenseric/graphql-multipart-request-spec#server 
 	app.use(graphqlUploadExpress({
 		maxFileSize: 10000000, // 10 MB
 		maxFiles: 20,
@@ -47,14 +47,14 @@ async function startServer() {
 		plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 	});
 	await apolloServer.start();
-	//Short for app.use(apolloServer.getMiddleware({ ... }));
+	// Short for app.use(apolloServer.getMiddleware({ ... }));
 	apolloServer.applyMiddleware({
 		app: app,
 		path: '/'
 	});
 
 	// Connect to MongoDB 
-	mongoose.connect(`${process.env.MONGO_URL}`);
+	await mongoose.connect(`${process.env.MONGO_URL}`);
 
 	// Start the server
 	await httpServer.listen({ port: process.env.PORT });
