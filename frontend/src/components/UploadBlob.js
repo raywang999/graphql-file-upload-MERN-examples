@@ -12,11 +12,13 @@ const SINGLE_UPLOAD_MUTATION = gql`
 export default function UploadBlob() {
   const [name, setName] = React.useState('');
   const [content, setContent] = React.useState('');
+  // Refer to ./UploadFile.js
   const [singleUploadMutation] = useMutation(
     SINGLE_UPLOAD_MUTATION
   );
   const apolloClient = useApolloClient();
 
+  // Object destructuring equivalent to const value = event.target.value
   const onNameChange = ({ target: { value } }) => setName(value);
   const onContentChange = ({ target: { value } }) => setContent(value);
   const onSubmit = (event) => {

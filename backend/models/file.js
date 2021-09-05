@@ -1,3 +1,7 @@
+/*
+ * A mongoose model representing the `File` type defined in '../graphql/index.js'
+ */
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;

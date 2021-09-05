@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-core');
 
+// Our GraphQL Schema. Refer to https://www.apollographql.com/docs/tutorial/schema/#define-your-schemas-types 
 module.exports = gql(`
 scalar Upload
 
