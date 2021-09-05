@@ -10,11 +10,10 @@ import { createUploadLink } from 'apollo-upload-client';
 
 import App from './App';
 
-// Create ApolloClient capable of handling file uploads
-// Refer to https://www.apollographql.com/docs/react/api/core/ApolloClient/ 
 const client = new ApolloClient({
   cache: new InMemoryCache({}),
   ssrMode: typeof window === 'undefined',
+  // Create Apollo Link capable of handling file uploads
   link: createUploadLink({
     uri: process.env.REACT_APP_API_URI,
   }),
