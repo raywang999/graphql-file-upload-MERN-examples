@@ -1,17 +1,19 @@
+//import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import reportWebVitals from './reportWebVitals';
 import {
   ApolloClient,
   ApolloProvider,
+  InMemoryCache
 } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
-import { cache } from './cache';
 import App from './App';
 
+// Create ApolloClient capable of handling file uploads
+// Refer to https://www.apollographql.com/docs/react/api/core/ApolloClient/ 
 const client = new ApolloClient({
-  cache,
+  cache: new InMemoryCache({}),
   ssrMode: typeof window === 'undefined',
   link: createUploadLink({
     uri: process.env.REACT_APP_API_URI,
@@ -19,6 +21,7 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
+  // Allow child Components to access our ApolloClient
   <ApolloProvider 
     client={client}
   >
