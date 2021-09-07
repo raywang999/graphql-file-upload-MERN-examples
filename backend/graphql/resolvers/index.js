@@ -1,6 +1,6 @@
 const graphQLUpload = require('graphql-upload');
 
-const { storeUpload } = require('./helpers/storeUpload');
+const storeUpload = require('./helpers/storeUpload');
 const File = require('../../models/file');
 
 module.exports = {

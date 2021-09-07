@@ -8,10 +8,10 @@ const mongoose = require('mongoose');
 require('dotenv').config(); //configure environment variables as specified in `.env`
 
 const UPLOAD_DIRECTORY_URL = require('./config/UPLOAD_DIRECTORY_URL.js');
-const apolloTypeDefs = require('./graphql/schema/index');
+const apolloTypeDefs = require('./graphql/typeDefs/index');
 const apolloResolvers = require('./graphql/resolvers/index');
 
-/**
+/*
  * Starts the API server.
  */
 async function startServer() {
@@ -26,7 +26,7 @@ async function startServer() {
 		maxFileSize: 10000000, // 10 MB
 		maxFiles: 20,
 	}));
-	//Add express middleware
+	// Add custom express middleware
 	app.use((req, res, next) => {
 		res.setHeader('Access-Control-Allow-Origin', '*');
 		res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
