@@ -50,7 +50,7 @@ async function startServer() {
 	// Short for app.use(apolloServer.getMiddleware({ ... }));
 	apolloServer.applyMiddleware({
 		app: app,
-		path: '/'
+		path: '/graphql'
 	});
 
 	// Connect to MongoDB 
@@ -58,7 +58,7 @@ async function startServer() {
 
 	// Start the server
 	await httpServer.listen({ port: process.env.PORT });
-	console.log(`🚀 Server ready at http://localhost:${process.env.PORT}/${apolloServer.graphqlPath}`);
+	console.log(`🚀 Server ready at http://localhost:${process.env.PORT}${apolloServer.graphqlPath}`);
 }
 
 startServer();

@@ -6,7 +6,7 @@ import UploadFileList from './components/UploadFileList';
 import Uploads from './components/Uploads';
 
 // Render each example Component with an appropriate header
-export default () => {
+const app = () => {
   return (
     <React.Fragment>
       <div>
@@ -28,3 +28,5 @@ export default () => {
     </React.Fragment>
   );
 }
+
+export default app;
